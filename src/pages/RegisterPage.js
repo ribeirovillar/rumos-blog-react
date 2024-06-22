@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../services/AuthService';
+import './RegisterPage.css';
 
 function useRegister() {
   const authService = new AuthService();
@@ -60,18 +61,18 @@ function RegisterPage() {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleRegister}>
-        <Input label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+    <div className="registerPageContainer">
+      <form onSubmit={handleRegister} className="registerForm">
+        <h1>Register Page</h1>
+        {error && <p className="error">{error}</p>}
+        <Input label="Email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <Input label="First Name" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
         <Input label="Last Name" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         <Input label="Birth Date" type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
         <button type="submit">Register</button>
+        <Link to="/login" className="loginLink">Already have an account? Log in</Link>
       </form>
-      <Link to="/login">Already Registered</Link>
     </div>
   );
 }

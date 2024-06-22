@@ -1,0 +1,91 @@
+.landingPageContainer {
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.postsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.postItem {
+    background: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.postActions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.adminButton {
+    background-color: #007bff;
+}
+
+.adminButton:hover {
+    background-color: #0056b3;
+}
+
+.logoutButton {
+    background-color: #dc3545;
+}
+
+.logoutButton:hover {
+    background-color: #c82333;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.pagination .button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination .button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination .button:not(:disabled):hover {
+    background-color: #0056b3;
+}
+
+.pagination span {
+    color: #666;
+    font-size: 16px;
+}

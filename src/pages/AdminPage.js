@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AdminService from '../services/AdminService';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../services/AuthService';
+import './AdminPage.css';
 
 function useUsers() {
     const [users, setUsers] = useState([]);
@@ -46,13 +47,13 @@ function useNavigation() {
 
 }
 
-function Button({ onClick, children }) {
-    return <button onClick={onClick}>{children}</button>;
+function Button({ onClick, children, className }) {
+    return <button onClick={onClick} className={className}>{children}</button>;
 }
 
 function UsersTable({ users, onPromote, onRevoke }) {
     return (
-        <table>
+        <table className="usersTable">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -69,9 +70,9 @@ function UsersTable({ users, onPromote, onRevoke }) {
                         <td>{user.lastName}</td>
                         <td>{user.email}</td>
                         <td>{user.roles.join(', ')}</td>
-                        <td>
-                            <Button onClick={() => onPromote(user.id)}>Promote to Admin</Button>
-                            <Button onClick={() => onRevoke(user.id)}>Revoke Admin</Button>
+                        <td className="userActions">
+                            <button className="userActions" onClick={() => onPromote(user.id)}>Promote</button>
+                            <button className="userActions" onClick={() => onRevoke(user.id)}>Revoke</button>
                         </td>
                     </tr>
                 ))}
@@ -85,11 +86,18 @@ function AdminPage() {
     const { logout, navigateToLanding } = useNavigation();
 
     return (
-        <div>
-            <h1>Admin Page</h1>
-            <Button onClick={navigateToLanding}>Back to Landing Page</Button>
-            <Button onClick={logout}>Logout</Button>
-            <UsersTable users={users} onPromote={promoteUser} onRevoke={revokeUser} />
+        <div className="adminPageContainer">
+            <div>
+                <div className="adminHeader">
+                    <h1>Admin Page</h1>
+                    <div className="actionButtons">
+                        <Button className="actionButton" onClick={navigateToLanding}>Back to Landing Page</Button>
+                        <Button className="logoutButton" onClick={logout}>Logout</Button>
+                    </div>
+                </div>
+
+                <UsersTable users={users} onPromote={promoteUser} onRevoke={revokeUser} />
+            </div>
         </div>
     );
 }

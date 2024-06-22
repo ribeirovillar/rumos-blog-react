@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import AuthService from '../services/AuthService';
+import './LoginPage.css';
 
 function useAuth() {
   const navigate = useNavigate();
@@ -71,15 +72,15 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleLogin}>
+    <div className="loginPageContainer">
+      <form onSubmit={handleLogin} className="loginForm">
+        <h1>Login Page</h1>
+        {error && <p className="error">{error}</p>}
         <Input label="Email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">Login</button>
+        <Link to="/register" className="registerLink">Create Account</Link>
       </form>
-      <Link to="/register">Create Account</Link>
     </div>
   );
 }

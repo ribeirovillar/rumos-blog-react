@@ -1,0 +1,96 @@
+.adminPageContainer {
+    padding: 20px;
+    background-color: #f0f2f5;
+  }
+
+  .adminHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+  
+  .userList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .userItem {
+    background: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .userName {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .userActions {
+    text-align: right;
+  }
+  
+  .actionButton {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .actionButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .logoutButton {
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .logoutButton:hover {
+    background-color: #c82333;
+  }
+
+  .usersTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.usersTable th, .usersTable td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.usersTable th {
+  background-color: #f2f2f2;
+}
+
+.userActions button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.userActions button:last-child {
+  margin-right: 0;
+}
+
+.userActions button:hover {
+  background-color: #0056b3;
+}

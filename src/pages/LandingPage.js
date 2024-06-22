@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Post from '../components/Post';
-import PostForm from '../components/PostForm'; // New component for post form
+import PostForm from '../components/PostForm';
 import PostService from '../services/PostService';
 import AuthService from '../services/AuthService';
+import './LandingPage.css';
 
 function LandingPage() {
     const categoryOptions = ['SCIENCE', 'TECHNOLOGY', 'SPORTS', 'LIFESTYLE', 'POLITICS'];
@@ -98,25 +99,29 @@ function LandingPage() {
     }
 
     return (
-        <div>
-            <h2>Posts</h2>
-            <button onClick={logout}>Logout</button>
-            {isAdmin && <button onClick={goToAdminPage}>Admin Page</button>}
+        <div className="landingPageContainer">
+            <div className="postsHeader">
+                <h1>Posts</h1>
+                <div className="actionButtons">
+                    {isAdmin && <button className="button adminButton" onClick={goToAdminPage}>Admin Page</button>}
+                    <button className="button logoutButton" onClick={logout}>Logout</button>
+                </div>
+            </div>
             {posts.map(post => (
-                <Post key={post.id} post={post} onEdit={() => editPost(post)} onDelete={() => deletePost(post.id)} />
+                <div key={post.id} className="postItem">
+                    <Post post={post} onEdit={() => editPost(post)} onDelete={() => deletePost(post.id)} />
+                </div>
             ))}
             {isAdmin && <PostForm
                 post={selectedPost}
                 categoryOptions={categoryOptions}
                 onSave={createOrUpdatePost}
-                onCancel={clearPostForm}
-            />}
-            {totalPages > 1 && (
-                <div>
-                    <button onClick={previousPage}>Previous Page</button>
-                    <button onClick={nextPage}>Next Page</button>
-                </div>
-            )}
+                onCancel={clearPostForm} />}
+            <div className="pagination">
+                <button className="button" disabled={page === 0} onClick={() => setPage(page - 1)}>Previous</button>
+                <span>Page {page + 1} of {totalPages}</span>
+                <button className="button" disabled={page + 1 >= totalPages} onClick={() => setPage(page + 1)}>Next</button>
+            </div>
         </div>
     );
 }
