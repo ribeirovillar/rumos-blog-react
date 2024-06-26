@@ -40,21 +40,18 @@ function LandingPage() {
     }
 
     async function createOrUpdatePost(postData, isUpdate = false) {
-        try {
-            const response = isUpdate ? await postService.updatePost(postData.id, postData) : await postService.createPost(postData);
-            clearPostForm();
-            if (isUpdate) {
-                refreshPost(postData.id);
-            } else {
-                setPosts([response.data, ...posts]);
-            }
-        } catch (error) {
-            alertError(error);
+        const response = isUpdate ? await postService.updatePost(postData.id, postData) : await postService.createPost(postData);
+        clearPostForm();
+        if (isUpdate) {
+            refreshPost(postData.id);
+        } else {
+            setPosts([response.data, ...posts]);
         }
     }
 
     function editPost(post) {
         setSelectedPost(post);
+        window.scrollTo(0, 0);
     }
 
     async function refreshPost(postId) {
@@ -79,14 +76,6 @@ function LandingPage() {
         navigate('/admin');
     }
 
-    function nextPage() {
-        setPage(Math.min(page + 1, totalPages - 1));
-    }
-
-    function previousPage() {
-        setPage(Math.max(page - 1, 0));
-    }
-
     function alertError(error) {
         if (error.response) {
             alert(error.response.data.message);
@@ -107,16 +96,18 @@ function LandingPage() {
                     <button className="button logoutButton" onClick={logout}>Logout</button>
                 </div>
             </div>
+            {isAdmin && <div className="postForm">
+                <PostForm
+                    post={selectedPost}
+                    categoryOptions={categoryOptions}
+                    onSave={createOrUpdatePost}
+                    onCancel={clearPostForm} />
+            </div>}
             {posts.map(post => (
                 <div key={post.id} className="postItem">
-                    <Post post={post} onEdit={() => editPost(post)} onDelete={() => deletePost(post.id)} />
+                    <Post post={post} onEdit={() => editPost(post)} onDelete={() => deletePost(post.id)} isAdmin={isAdmin} />
                 </div>
             ))}
-            {isAdmin && <PostForm
-                post={selectedPost}
-                categoryOptions={categoryOptions}
-                onSave={createOrUpdatePost}
-                onCancel={clearPostForm} />}
             <div className="pagination">
                 <button className="button" disabled={page === 0} onClick={() => setPage(page - 1)}>Previous</button>
                 <span>Page {page + 1} of {totalPages}</span>

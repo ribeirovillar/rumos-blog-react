@@ -1,0 +1,59 @@
+.commentForm {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.commentForm label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.commentForm input[type="text"] {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 22px); /* Adjust input width considering padding and border */
+}
+
+.commentForm .formActions {
+    display: flex;
+    gap: 10px;
+}
+
+.commentForm button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.commentForm button:hover {
+    background-color: #0056b3;
+}
+
+.commentForm p {
+    color: #ff0000;
+}
+
+.commentForm .saveButton {
+    background-color: #007bff;
+}
+
+.commentForm .saveButton:hover {
+    background-color: #0056b3;
+}
+
+.commentForm .cancelButton {
+    background-color: #dc3545;
+}
+
+.commentForm .cancelButton:hover {
+    background-color: #c82333;
+}

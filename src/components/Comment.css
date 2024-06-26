@@ -1,0 +1,52 @@
+.commentContainer {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+
+.commentContent {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.commentActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.commentActions button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.commentActions .editButton {
+    background-color: #007bff;
+}
+
+.commentActions .editButton:hover {
+    background-color: #0056b3;
+}
+
+.commentActions .deleteButton {
+    background-color: #dc3545;
+}
+
+.commentActions .deleteButton:hover {
+    background-color: #c82333;
+}
+
+.commentError {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+}
+

@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import './PostForm.css';
 
 function PostForm({ post, categoryOptions, onSave, onCancel }) {
-    const initializeState = () => ({
+    const initializeState = useCallback(() => ({
         title: post?.title || '',
         content: post?.content || '',
         categories: post?.categories || [],
-    });
-
+    }), [post]);
+    
     const [state, setState] = useState(initializeState);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         setState(initializeState());
-    }, [post]);
+    }, [initializeState]);
 
     const toggleCategory = (value, checked) => {
         setState(prevState => {
@@ -33,60 +35,69 @@ function PostForm({ post, categoryOptions, onSave, onCancel }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const { title, content, categories } = state;
-
-        if (!title || !content || categories.length === 0) {
-            alert("Title, content, and at least one category are required.");
+        if (state.categories.length === 0) {
+            setError('Please select at least one category.');
             return;
         }
-
-        onSave?.({ ...state, id: post?.id }, Boolean(post?.id));
-        resetForm();
+        try {
+           onSave?.({ ...state, id: post?.id }, Boolean(post?.id));
+           resetForm();
+        } catch (error) {
+            if (error.response) {
+                setError(error.response.data.message);
+            }
+        }
     };
 
     const resetForm = () => {
         setState(initializeState);
         onCancel?.();
+        setError('');
     }
     
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="title">Title:</label>
-                <input
-                    id="title"
-                    type="text"
-                    name="title"
-                    value={state.title}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="content">Content:</label>
-                <textarea
-                    id="content"
-                    name="content"
-                    value={state.content}
-                    onChange={handleInputChange}
-                />
-            </div>
+        <form className="postForm" onSubmit={handleSubmit}>
+            <label htmlFor="title">Título</label>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                value={state.title}
+                onChange={handleInputChange}
+                required
+            />
+
+            <label htmlFor="content">Conteúdo</label>
+            <textarea
+                id="content"
+                name="content"
+                value={state.content}
+                onChange={handleInputChange}
+                required
+            />
+
             <fieldset>
-                <legend>Categories:</legend>
+                <legend>Categorias</legend>
                 {categoryOptions.map(option => (
-                    <label key={option}>
+                    <div key={option}>
                         <input
                             type="checkbox"
+                            id={option}
                             name="categories"
                             value={option}
                             checked={state.categories.includes(option)}
-                            onChange={handleInputChange}
+                            onChange={e => toggleCategory(option, e.target.checked)}
                         />
-                        {option}
-                    </label>
+                        <label htmlFor={option}>{option}</label>
+                    </div>
                 ))}
             </fieldset>
-            <button type="submit">Submit</button>
-            <button type="button" onClick={resetForm}>Clear</button>
+
+            <div className="formActions">
+                <button type="submit" className="saveButton">Salvar</button>
+                <button type="button" className="cancelButton" onClick={resetForm}>Cancelar</button>
+            </div>
+            {error && <p className="commentError">{error}</p>}
         </form>
     );
 }

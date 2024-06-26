@@ -1,0 +1,55 @@
+/* Estilo para o PostForm */
+.postForm {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.postForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.postForm .formActions {
+    display: flex;
+    gap: 10px;
+}
+
+.postForm input[type="text"],
+.postForm select,
+.postForm textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.postForm button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.postForm .saveButton {
+    background-color: #007bff;
+}
+
+.postForm .saveButton:hover {
+    background-color: #0056b3;
+}
+
+.postForm .cancelButton {
+    background-color: #dc3545;
+}
+
+.postForm .cancelButton:hover {
+    background-color: #c82333;
+}

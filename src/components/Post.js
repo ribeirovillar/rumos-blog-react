@@ -2,8 +2,9 @@ import { Comment } from "./Comment";
 import React, { useState } from "react";
 import CommentForm from "./CommentForm";
 import PostService from "../services/PostService";
+import './Post.css';
 
-export function Post({ post, onEdit, onDelete }) {
+export function Post({ post, onEdit, onDelete, isAdmin }) {
 
     const [comments, setComments] = useState(post.comments);
     const postService = new PostService();
@@ -19,15 +20,17 @@ export function Post({ post, onEdit, onDelete }) {
     };
 
     return (
-        <div key={post.id}>
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-            <p>Created: {post.created}</p>
-            <p>Categories: {post.categories.join(', ')}</p>
-            <p>Author: {post.author.name} ({post.author.email})</p>
-            <button onClick={() => onEdit(post)}>Edit Post</button>
-            <button onClick={() => onDelete(post.id)}>Delete Post</button>
-            <h4>Comments</h4>
+        <div className="postContainer" key={post.id}>
+            <h3 className="postTitle">{post.title}</h3>
+            <p className="postContent">{post.content}</p>
+            <p className="postMetadata">Created: {post.created}</p>
+            <p className="postMetadata">Categories: {post.categories.join(', ')}</p>
+            <p className="postMetadata">Author: {post.author.name} ({post.author.email})</p>
+            {isAdmin && <div className="postActions">
+                <button className="editButton" onClick={() => onEdit(post)}>Edit Post</button>
+                <button className="deleteButton" onClick={() => onDelete(post.id)}>Delete Post</button>
+            </div>}
+            <h4 className="commentsTitle">Comments</h4>
             {comments && comments.map(comment => (
                 <Comment key={comment.id} comment={comment} refreshComments={refreshComments} />
             ))}
