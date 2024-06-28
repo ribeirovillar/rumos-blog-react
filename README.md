@@ -50,6 +50,27 @@ npm install
 npm start
 ```
 
+### Option 3: Docker Compose
+
+To start the project using Docker Compose, follow these steps:
+
+1. Clone the repository.
+2. Ensure Docker and Docker Compose are installed on your machine.
+2. Open a terminal in the root directory of the project.
+3. Run the following command to build and start the containers defined in your `docker-compose.yml`
+
+```bash
+docker-compose up
+```
+
+This command will automatically build the Docker image (if necessary) and start the container. Once the container is running, the application will be accessible through the browser at `http://localhost:3000`.
+
+To stop and remove the containers, use the command:
+
+```bash
+docker-compose down
+```
+
 ---
 
 ## User Application Credentials
