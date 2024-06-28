@@ -1,4 +1,75 @@
-# Getting Started with Create React App
+# Rumos' Blog Project Frontend
+
+The Rumos' blog project frontend is developed using React, leveraging the Create React App for bootstrapping the application. It interacts with the backend application developed in Java, Spring Boot, and SQL to provide a seamless user experience for both Admin and Common Users.
+
+The frontend application allows users to view, create, edit, and delete blog posts. It supports user authentication and authorization, providing different levels of access and functionality based on the user role. The application is styled with CSS and utilizes React Router for navigation.
+
+---
+
+## Running the Frontend Application
+
+### Requirements
+- Node.js
+- npm
+
+### Steps to Run the Application
+
+### Option 1: Using the Shell Script
+
+A shell script is provided in the root directory of the project to automate the process of cloning the repositories and starting the projects. To use the script:
+
+### Requirements
+- docker-compose
+- Java 17
+- Maven
+- git
+- docker
+- npm
+
+1. Download the [`start-project.sh`](https://github.com/ribeirovillar/rumos-blog-react/blob/master/start-project.sh)  script to your desired directory.
+2. Open a terminal in the directory where the script was downloaded.
+3. Run the following command to give execution permissions to the script:
+```bash
+chmod +x start-project.sh
+```
+4. Run the script with the following command:
+```bash
+./start-project.sh
+```
+
+### Option 2: Manual Setup
+
+1. Clone the repository
+2. Open a terminal in the root directory of the frontend project.
+2. Install the dependencies by running:
+```bash
+npm install
+```
+3. Start the application:
+```bash
+npm start
+```
+
+---
+
+## User Application Credentials
+
+| Role  | Email           | Password  |
+|-------|-----------------|-----------|
+| Admin | admin@fake.com  | password  |
+| User  | user@fake.com   | Senha@00  |
+
+---
+
+## Additional Tools and Libraries
+
+- React Router for navigation
+- Axios for HTTP requests
+- JWT for authentication
+
+---
+
+## Getting Started with the Frontend Application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -31,40 +102,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
